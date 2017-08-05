@@ -15,4 +15,14 @@ defmodule Budget.Conversion do
 		rate = find_euro(rates)
 		amount * rate
 	end
+
+	defp find_euro([%{"currency" => "euro", "rate" => rate} | _]) do
+		rate
+	end
+	defp find_euro(_ | tail) do
+		find_euro(tail)
+	end
+	defp find_euro([]) do
+		raise "No rate found for Euro"
+	end
 end
