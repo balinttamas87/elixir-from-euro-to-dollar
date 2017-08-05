@@ -19,6 +19,7 @@ defmodule Budget.Conversion do
 	defp find_euro([%{"currency" => "euro", "rate" => rate} | _]) do
 		rate
 	end
+	
 	defp find_euro([_ | tail]) do
 		find_euro(tail)
 	end
